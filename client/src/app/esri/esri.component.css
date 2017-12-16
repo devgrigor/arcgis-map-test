@@ -1,0 +1,12 @@
+@import 'https://js.arcgis.com/4.5/esri/css/main.css';
+@import '//fonts.googleapis.com/icon?family=Material+Icons';
+
+
+html,
+body,
+#viewDiv {
+  padding: 0;
+  margin: 0;
+  height: 100%;
+  width: 100%;
+}

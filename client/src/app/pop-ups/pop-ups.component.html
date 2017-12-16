@@ -1,0 +1,20 @@
+<div class="modal-backdrop fade in" [style.display]="popUpMode.show ? 'block' : 'none'" (click)="cancel()"></div>
+<div class="modal" tabindex="-1" role="dialog"
+     [style.display]="popUpMode.show ? 'block' : 'none'">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <a (click)="cancel()" class="pull-right">
+          <i class="glyphicon glyphicon-remove btn"
+             data-dismiss="modal" aria-label="Close" (click)="cancel()"></i>
+        </a>
+        <h1>{{popUpMode.title}} </h1>
+      </div>
+
+      <div class="modal-body">
+        <popup></popup>
+      </div>
+
+    </div>
+  </div>
+</div>

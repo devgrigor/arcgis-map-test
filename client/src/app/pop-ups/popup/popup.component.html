@@ -1,0 +1,83 @@
+<div class="form-group register-wrapper">
+  <div class="" *ngIf="!finished">
+    <h2 class="col-md-12">Register</h2>
+    <div class="col-md-12 "
+         [class.hidden]="!error_message">
+      <p class="alert alert-danger">{{ error_message }}</p>
+    </div>
+    <form (ngSubmit)="storeDonor()" [formGroup]="donationForm">
+      <div class="form-group">
+        <input type="email"
+               class="form-control"
+               placeholder="Email"
+               formControlName="email"
+               [(ngModel)]="donation.email"
+
+        />
+      </div>
+
+      <div class="form-group">
+        <input type="text"
+               class="form-control"
+               placeholder="First Name"
+               formControlName="firstName"
+               [(ngModel)]="donation.firstName"
+
+        />
+      </div>
+
+      <div class="form-group">
+        <input type="text"
+               class="form-control"
+               placeholder="Last Name"
+               formControlName="lastName"
+               [(ngModel)]="donation.lastName"
+
+        />
+      </div>
+      <div class="form-group">
+        <input type="text"
+               class="form-control"
+               placeholder="Contact Number"
+               formControlName="contactNumber"
+               [(ngModel)]="donation.contactNumber"
+
+        />
+      </div>
+      <div class="form-group" *ngIf="enums">
+        <select formControlName="antigen"
+                [(ngModel)]="donation.antigen"
+                class="form-control">
+          <option [ngValue]="undefined">Choose Antigen</option>
+          <option *ngFor="let antigen of enums.antigen" [ngValue]="antigen">{{antigen}}</option>
+        </select>
+      </div>
+
+      <div class="form-group" *ngIf="enums">
+        <select formControlName="bloodGroup"
+                [(ngModel)]="donation.bloodGroup"
+                class="form-control">
+          <option [ngValue]="undefined">Choose Blood Group</option>
+          <option *ngFor="let bloodGroup of enums.bloodGroup" [ngValue]="bloodGroup">{{bloodGroup}}</option>
+        </select>
+      </div>
+      <div class="form-group" *ngIf="!donation._id">
+        <button class="btn btn-success">
+          Register
+        </button>
+      </div>
+      <div class="form-group" *ngIf="donation._id">
+        <button class="btn btn-success">
+          Edit
+        </button>
+        <button ty class="btn btn-danger" (click)="delete()">
+          Delete
+        </button>
+      </div>
+    </form>
+  </div>
+  <div class="" *ngIf="finished">
+    <h1>Your link for edit/delete</h1>
+    <input value="{{baseUrl}}/?linkId={{donation.linkId}}" class="form-control">
+  </div>
+</div>
